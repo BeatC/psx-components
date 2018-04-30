@@ -1,0 +1,32 @@
+env:
+  es6: true
+  jest: true
+  node: true
+extends:
+  - eslint:recommended
+  - plugin:node/recommended
+  - prettier
+parser: babel-eslint
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
+plugins:
+  - node
+rules:
+  indent:
+    - error
+    - 2
+    - SwitchCase: 1
+  linebreak-style:
+    - error
+    - unix
+  node/no-unsupported-features:
+    - error
+    - ignores:
+      - syntax
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - always

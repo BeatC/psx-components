@@ -1,0 +1,64 @@
+{
+  "name": "@sailci/psx-components",
+  "version": "0.0.1",
+  "private": true,
+  "repository": "git@github.com:sailci/psx-components.git",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Christopher Shepherd",
+      "email": "chris@sail.sh",
+      "url": "http://chrisshepherd.me"
+    },
+    {
+      "name": "Jon Sharratt",
+      "email": "jon@sail.sh",
+      "url": "https://craftship.io"
+    }
+  ],
+  "engines": {
+    "node": "9.2.1",
+    "yarn": "^1"
+  },
+  "scripts": {
+    "compile": "lerna run compile",
+    "lint": "eslint .",
+    "precommit": "lint-staged",
+    "prepublish": "yarn compile",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.3",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "husky": "^0.14.3",
+    "jest": "^22.4.3",
+    "lerna": "^2.11.0",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.12.1"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "<rootDir>/{bin,src}/**/*.js"
+    ],
+    "projects": [
+      "packages/*"
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
