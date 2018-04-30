@@ -1,0 +1,4 @@
+{
+  "plugins": ["syntax-object-rest-spread"],
+  "presets": [["env", { "targets": { "node": "9.2.1" } }]]
+}

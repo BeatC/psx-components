@@ -21,13 +21,15 @@
     "yarn": "^1"
   },
   "scripts": {
-    "compile": "lerna run compile",
+    "precompile": "lerna exec -- rimraf lib",
+    "compile": "lerna exec -- babel -d lib src --ignore '*.test.js'",
     "lint": "eslint .",
-    "precommit": "lint-staged",
+    "precommit": "lint-staged && yarn test",
     "prepublish": "yarn compile",
     "test": "jest"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.3",
@@ -40,7 +42,8 @@
     "jest": "^22.4.3",
     "lerna": "^2.11.0",
     "lint-staged": "^7.0.0",
-    "prettier": "^1.12.1"
+    "prettier": "^1.12.1",
+    "rimraf": "^2.6.2"
   },
   "workspaces": [
     "packages/*"
