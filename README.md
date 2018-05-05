@@ -9,56 +9,44 @@ These components once merged into the master branch are then automatically avail
 We look forward to people contributing and suggesting components to make your CI pipeline and workflows super awesome.
 
 ### Component
+
 A typical component is made up of the following:
 
 ```js
 import exec from './exec';
 
 export default {
-  execute: async ({ children }) => {
+  execute: async ({ command }) => {
     try {
-      await exec(children);
+      await exec(command);
     } catch (err) {
       console.log(err.message);
 
       throw err;
     }
   },
-  validate: (props, children) => {
-    if (typeof children !== 'string') {
-      throw new Error('"children" of "Component" can only be a "string"');
-    }
-  },
-
+};
 ```
 
 You will need to give your component a sensible and unique name within the packages folder.
 
 This will end up being your component name CamelCase. For example the `run` package folder will become:
 
-`<Run>echo hello world</Run>`
+`<Run command="echo hello world" />`
 
 when using the component within your psx file.
 
-***
+---
 
 #### Component API
+
 A component **must** return a default object with the following schema.
 
-``` js
+```js
 {
-  async execute ({ children }) => {}
+  async execute ({ command }) => {}
   ...
 }
 ```
 
-Execute returns a promise, it is the core functionallity of what you want your component to do.  Feel free to get creative and use npm libraries at your disposal.
-
-``` js
-{
-  ...
-  validate: (props, children) => {}
-}
-```
-
-Validate allows you to ensure the schema conforms and will support what your component executes.  **props** and **children** components arguments are available.
+Execute returns a promise, it is the core functionality of what you want your component to do. Feel free to get creative and use npm libraries at your disposal.
