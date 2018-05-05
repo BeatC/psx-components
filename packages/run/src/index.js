@@ -2,18 +2,18 @@
 import exec from './exec';
 
 export default {
-  execute: async ({ children }) => {
+  execute: async ({ command }) => {
     try {
-      await exec(children);
+      await exec(command);
     } catch (err) {
       console.log(err.message);
 
       throw err;
     }
   },
-  validate: (props, children) => {
-    if (typeof children !== 'string') {
-      throw new Error('"children" of "Run" can only be a "string"');
+  validate: ({ command }) => {
+    if (typeof command !== 'string') {
+      throw new Error('"command" of "Run" can only be a "string"');
     }
   },
 };

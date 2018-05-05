@@ -17,13 +17,13 @@ describe('Run component', () => {
       });
 
       it('calls exec with correct command', async () => {
-        await Run.execute({ children: 'yarn' });
+        await Run.execute({ command: 'yarn' });
 
         expect(execMock).toHaveBeenCalledWith('yarn');
       });
 
       it('completes successfully', () => {
-        expect(Run.execute({ children: 'yarn' })).resolves.toBeUndefined();
+        expect(Run.execute({ command: 'yarn' })).resolves.toBeUndefined();
       });
     });
 
@@ -48,14 +48,14 @@ describe('Run component', () => {
       it('throws an error', () => {
         expect(
           Run.execute({
-            children: 'yarn',
+            command: 'yarn',
           }),
         ).rejects.toThrow('The command failed.');
       });
 
       it('shows a console log for the user', async () => {
         try {
-          await Run.execute({ children: 'yarn' });
+          await Run.execute({ command: 'yarn' });
         } catch (err) {
           //empty
         }
@@ -70,12 +70,12 @@ describe('Run component', () => {
       Run = require('.').default;
     });
 
-    it('does not throw an error when children is a string', () => {
-      expect(() => Run.validate({}, 'yarn')).not.toThrow();
+    it('does not throw an error when command is a string', () => {
+      expect(() => Run.validate({ command: 'yarn' })).not.toThrow();
     });
 
-    it('throws an error when children is not a string', () => {
-      expect(() => Run.validate({}, 1)).toThrow();
+    it('throws an error when command is not a string', () => {
+      expect(() => Run.validate({ command: 1 })).toThrow();
     });
   });
 });
