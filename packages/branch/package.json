@@ -1,0 +1,10 @@
+{
+  "name": "@sailci/psx-components-branch",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "scripts": {},
+  "publishConfig": {
+    "access": "public"
+  }
+}
