@@ -28,21 +28,13 @@ describe('Run component', () => {
     });
 
     describe('when command is unsuccessful', () => {
-      let consoleSpy;
-
       beforeEach(() => {
         execMock = jest.fn(() =>
           Promise.reject(new Error('The command failed.')),
         );
         jest.doMock('./exec', () => execMock);
 
-        consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
-
         Run = require('.').default;
-      });
-
-      afterEach(() => {
-        consoleSpy.mockRestore();
       });
 
       it('throws an error', () => {
@@ -51,16 +43,6 @@ describe('Run component', () => {
             command: 'yarn',
           }),
         ).rejects.toThrow('The command failed.');
-      });
-
-      it('shows a console log for the user', async () => {
-        try {
-          await Run.execute({ command: 'yarn' });
-        } catch (err) {
-          //empty
-        }
-
-        expect(consoleSpy).toHaveBeenCalledWith('The command failed.');
       });
     });
   });
