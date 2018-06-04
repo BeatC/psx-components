@@ -10,10 +10,10 @@ export default {
       nodir: true,
     });
 
-    const uploads = files.map(async f => {
+    const uploads = files.map(f => {
       const toLocation = path.join(to, f);
 
-      await storage.bucket(bucket).upload(path.resolve(from, f), {
+      return storage.bucket(bucket).upload(path.resolve(from, f), {
         destination: toLocation,
       });
     });
