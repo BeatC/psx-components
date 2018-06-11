@@ -21,6 +21,7 @@
     "yarn": "^1"
   },
   "scripts": {
+    "_pre-sail": "sleep 120",
     "precompile": "lerna exec -- rimraf lib",
     "compile": "lerna exec -- babel -d lib src --ignore '*.test.js'",
     "lint": "eslint .",
