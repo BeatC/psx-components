@@ -2,9 +2,9 @@
 
 ### Overview
 
-A mono-repo that holds components that make up the components you can use within a `.psx` file when building pipelines and worflows for Sail CI.
+A mono-repo that holds components that make up the components you can use within a `.sail` file when building pipelines and worflows for Sail CI.
 
-These components once merged into the master branch are then automatically available for everyone to use within your `.psx` file.
+These components once merged into the master branch are then automatically available for everyone to use within your `.sail` file.
 
 We look forward to people contributing and suggesting components to make your CI pipeline and workflows super awesome.
 
