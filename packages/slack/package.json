@@ -1,0 +1,13 @@
+{
+  "name": "@sailci/psx-components-slack",
+  "version": "0.1.1",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "scripts": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@slack/client": "^4.3.1"
+  }
+}
