@@ -1,6 +1,6 @@
 export default {
   execute: async ({ when }, context, next) => {
-    if (!process.env.GIT_BRANCH) {
+    if (!process.env.GIT_COMMIT_BRANCH) {
       throw new Error(
         '"Branch" component requires GIT_BRANCH environment variable to be set',
       );
@@ -8,7 +8,7 @@ export default {
 
     const whenRegExp = new RegExp(when);
 
-    if (whenRegExp.test(process.env.GIT_BRANCH)) {
+    if (whenRegExp.test(process.env.GIT_COMMIT_BRANCH)) {
       await next();
     }
   },
