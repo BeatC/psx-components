@@ -2,7 +2,7 @@ describe('Branch component', () => {
   let Branch;
 
   afterEach(() => {
-    process.env.GIT_BRANCH = undefined;
+    process.env.GIT_COMMIT_BRANCH = undefined;
     jest.resetModules();
   });
 
@@ -27,12 +27,12 @@ describe('Branch component', () => {
 
     describe('when "GIT_BRANCH" environment variable is present', () => {
       beforeEach(() => {
-        process.env.GIT_BRANCH = undefined;
+        process.env.GIT_COMMIT_BRANCH = undefined;
       });
 
       describe('when "when" matches current branch', () => {
         beforeEach(() => {
-          process.env.GIT_BRANCH = 'master';
+          process.env.GIT_COMMIT_BRANCH = 'master';
 
           nextMock = jest.fn(() => Promise.resolve());
 
@@ -48,7 +48,7 @@ describe('Branch component', () => {
 
       describe('when "when" does not match current branch', () => {
         beforeEach(() => {
-          process.env.GIT_BRANCH = 'master';
+          process.env.GIT_COMMIT_BRANCH = 'master';
 
           nextMock = jest.fn(() => Promise.resolve());
 
